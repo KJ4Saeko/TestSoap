@@ -1,0 +1,173 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.mycompany.app</groupId>
+   <artifactId>my-app</artifactId>
+   <version>1.0</version>
+   
+   <!-- Add the SmartBear ReadyAPI plugin repository. --> 
+   <!-- Maven will download the plugin from the specified URL. -->
+   <pluginRepositories>
+      <pluginRepository>
+         <id>SmartBearPluginRepository</id>
+         <url>http://smartbearsoftware.com/repository/maven2</url>
+      </pluginRepository>
+   </pluginRepositories>
+
+   <build>
+      <plugins>
+         <plugin>
+
+            <!-- Plugin groupID used to uniquely identify the project with the plugin. -->
+            <groupId>com.smartbear</groupId>
+
+
+            <!-- Plugin artifactId used to find the plugin in the project. -->
+            <artifactId>ready-api-maven-plugin</artifactId>
+
+            <!-- Specifies your ReadyAPI version. Maven will use the appropriate plugin version. -->
+            <!-- IMPORTANT: Must be the same as your ReadyAPI version. -->
+            <!-- For maintenance builds, use 2.6.0-m-SNAPSHOT instead. -->
+            <version>2.6.0</version>
+
+            <!-- Add a JDBC driver dependency if your tests use JDBC. -->
+            <!-- Maven imports and installs the driver automatically. -->
+            <!-- <dependencies>
+               <dependency>
+                  <groupId>mysql</groupId>
+                  <artifactId>mysql-connector-java</artifactId>
+                  <version>5.1.6</version>
+               </dependency>
+            </dependencies> -->
+
+            <executions>
+               <execution>
+
+                  <!-- Specifies the lifecycle phase to run ReadyAPI tests. -->
+                  <!-- We recommend using the test phase. -->
+                  <phase>test</phase>
+                  <goals>
+                     <!-- Do not change. Commands the Maven plugin to run a functional test. -->
+                     <goal>test</goal>
+                  </goals>
+
+                  <configuration>
+
+                     <!-- Required. Specifies the path to the project to execute. -->
+                     <!-- For composite projects, specify the folder that contains the project. -->
+                     <projectFile>Sample-SOAP-project.xml</projectFile>
+
+                     <!-- Required for reports. -->
+                     <!-- Only available in ReadyAPI Pro. --> 
+
+                     <!-- Sets the output folder for reports. --> 
+                     <outputFolder>${basedir}/target/surefire-reports</outputFolder>
+
+                     <!-- Specifies the format of the report. Possible values: PDF, XLS, HTML, RTF, CSV, TXT and XML. -->
+                     <reportFormat>PDF</reportFormat>
+
+                     <!-- Specifies the folder to store reports in. -->
+                     <reports>${basedir}/target/surefire-reports</reports>
+
+                     <!-- Specifies the report type. Only available in ReadyAPI Pro. -->
+                     <!-- Click Reporting on the ReadyAPI toolbar to find available reports. -->
+                     <reportName>Project Report</reportName>
+
+                     <!-- Commands Maven to create a printed report. -->
+                     <printReport>true</printReport>
+
+                     <!-- Provides access to ReadyAPI properties. -->
+                     <readyApiProperties>
+                        <property>
+                           <!-- Required. A folder with ReadyAPI executable files. --> 
+                           <!-- Used to run a local installation of ReadyAPI. --> 
+                           <name>soapui.home</name> 
+                           <value>C:/Program Files/SmartBear/ReadyAPI-2.6.0/bin</value>
+                        </property>
+                     </readyApiProperties>
+
+                     <!-- ========= Additional elements ============= -->
+
+                     <!-- Commands ReadyAPI to generate JUnit-style reports. -->
+                     <junitReport>true</junitReport>
+
+                     <!-- Specifies the name of the test suite to be run. -->
+                     <!-- <testSuite></testSuite> --> 
+
+                     <!-- Specifies the name of the test case to run. -->
+                     <!-- <testCase></testCase> --> 
+
+                     <!-- Specifies the tags to use. -->
+                     <!-- Only the test cases with the specified tags will be run. -->
+                     <!-- Use the syntax below. -->
+                     <!-- <tags><param>TestCase tag1, tag2</param></tags> --> 
+
+                     <!-- Overrides the service endpoints specified in the test. -->
+                     <!-- <endpoint></endpoint> --> 
+
+                     <!-- Overrides the host specified in the the test. -->
+                     <!-- <host></host> --> 
+
+                     <!-- Overrides the user name for all requests. -->
+                     <!-- <username></username> --> 
+
+                     <!-- Overrides the passwords for all requests. -->
+                     <!-- <password></password> --> 
+
+                     <!-- Overrides the domain used for requests. -->
+                     <!-- <domain></domain> --> 
+
+                     <!-- If true, commands Maven to export all the requests. -->
+                     <!-- <exportAll></exportAll> --> 
+
+                     <!-- Specifies the SoapUI settings file to use. Required for custom ReadyAPI reports. -->
+                     <!-- <settingsFile></settingsFile> --> 
+
+                     <!-- Specifies the type of the WSS password. -->
+                     <!-- <wssPasswordType></wssPasswordType> --> 
+
+                     <!-- Specifies the password for an encrypted project. -->
+                     <!-- <projectPassword></projectPassword > --> 
+
+                     <!-- Specifies the password for an encrypted settings file. -->
+                     <!-- <settingsPassword></settingsPassword> --> 
+
+                     <!-- Specifies the value of a global property for the test run. -->
+                     <!-- <globalProperties>
+                        <value>Sample Project Property=My sample value</value>
+                     </globalProperties> -->
+
+                     <!-- Specifies the value of a project property for the test run. -->
+                     <!-- <projectProperties>
+                        <value>Some Property=My Sample Value</value>
+                     </projectProperties> -->
+
+                     <!-- Saves the project after the test run. -->
+                     <!-- <saveAfterRun></saveAfterRun> --> 
+
+                     <!-- If true, commands Maven to continue -->
+                     <!-- the test run even if an assertion triggers. -->
+                     <!-- <testFailIgnore>true</testFailIgnore> -->
+
+                     <!-- Enables HTML coverage reports. Only available in ReadyAPI Pro. -->
+                     <!-- <coverage></coverage> --> 
+
+                     <!-- Specifies the environment to use in the test run. -->
+                     <!-- Only available in ReadyAPI Pro. -->
+                     <!-- <environment></environment> --> 
+
+                     <!-- If true, ReadyAPI will not send usage statistics. -->
+                     <!-- <optOutUsageStatistics></optOutUsageStatistics> --> 
+
+                     <!-- ========= /Additional elements ============= -->
+
+                  </configuration>
+               </execution>
+            </executions>
+         </plugin>
+
+      </plugins>
+
+   </build>
+
+</project>
