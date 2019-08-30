@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="9d515d77-a706-4b31-a13f-2c7c0ed8409d" activeEnvironment="Default" name="tempconvert" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="9e93e419-9a15-4ef2-8131-cfe489e19f99" wsaVersion="NONE" name="TempConvertSoap" type="wsdl" bindingName="{https://www.w3schools.com/xml/}TempConvertSoap" soapVersion="1_1" anonymous="optional" definition="https://www.w3schools.com/xml/tempconvert.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://www.w3schools.com/xml/tempconvert.asmx</con:endpoint></con:endpoints><con:operation id="4dc1a475-db73-4324-a4ab-f5358e339e9a" isOneWay="false" action="https://www.w3schools.com/xml/CelsiusToFahrenheit" name="CelsiusToFahrenheit" bindingOperationName="CelsiusToFahrenheit" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="173a7f33-6da5-4aba-8025-f2ab8f5cd6b2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.w3schools.com/xml/tempconvert.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:x/="https://www.w3schools.com/xml/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <x/:CelsiusToFahrenheit>\r
+         <!--Optional:-->\r
+         <x/:Celsius>?</x/:Celsius>\r
+      </x/:CelsiusToFahrenheit>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://www.w3schools.com/xml/CelsiusToFahrenheit"/></con:call></con:operation><con:operation id="11e3d81d-ff5a-4ee4-a7ed-1f8a47f641a9" isOneWay="false" action="https://www.w3schools.com/xml/FahrenheitToCelsius" name="FahrenheitToCelsius" bindingOperationName="FahrenheitToCelsius" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4f8bb964-9664-4f5a-9e75-377ec63c5fff" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.w3schools.com/xml/tempconvert.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:x/="https://www.w3schools.com/xml/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <x/:FahrenheitToCelsius>\r
+         <!--Optional:-->\r
+         <x/:Fahrenheit>?</x/:Fahrenheit>\r
+      </x/:FahrenheitToCelsius>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://www.w3schools.com/xml/FahrenheitToCelsius"/></con:call></con:operation></con:interface><con:testSuite id="f24fe46b-8a16-4eb1-9d90-b39f76d66a17" name="TempConvertSoap_TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="675ce98a-a65a-4592-a0b8-c5037952f4d6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CelsiusToFahrenheit_TestCase" searchProperties="true"><con:settings/><con:testStep type="groovy" name="ReadExcel" id="42d5e197-b073-4372-8ca9-5188545e7e0b"><con:settings/><con:config><script>	// Get the path to an input file from a custom property
+	def inputFilePath = testRunner.testCase.testSuite.getPropertyValue( "inputFile" )
+
+	def tc = testRunner.testCase.testSuite.project.testSuites["tempConvertSoap_TestSuite"].testCase["CelsiusToFahrenheit_TestCase"]
+	// Iterate through the input file
+	File file = new File(inputFilePath.toString()).eachLine{
+
+	// Set Test Suite custom properties
+	testRunner.testCase.testSuite.setPropertyValue( "inValue", it.split(",")[0])
+	testRunner.testCase.testSuite.setPropertyValue( "outValue", it.split(",")[1])
+
+	def runner = tc.run(null, false)
+	// Log info to a output
+	log.info "inValue: ${it.split(",")[0]}; outValue : ${it.split(",")[2]}"
+
+	log.info "Execution of test case with CSV values : ${it.split(",")[0]}and expected returned value : ${it.split(",")[2]} ${runner.status}"
+	// Sleep for a second since we are using public service
+	sleep 500
+				
+	}	</script></con:config></con:testStep><con:testStep type="request" id="88680f11-12e9-4ed2-94e8-ddf4659a8620" name="CelsiusToFahrenheit"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TempConvertSoap</con:interface><con:operation>CelsiusToFahrenheit</con:operation><con:request name="CelsiusToFahrenheit" id="9feb878c-c412-42b8-a8ae-f2ae7e3250b3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.w3schools.com/xml/tempconvert.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:x/="https://www.w3schools.com/xml/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <x/:CelsiusToFahrenheit>\r
+         <!--Optional:-->\r
+         <x/:Celsius>2</x/:Celsius>\r
+      </x/:CelsiusToFahrenheit>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="https://www.w3schools.com/xml/CelsiusToFahrenheit" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="delay" name="Delay" id="da7abd96-0e56-482c-b4a6-481ed7971a5b"><con:settings/><con:config><delay>1000</delay></con:config></con:testStep><con:properties><con:property><con:name>inputFile</con:name><con:value>C:\Users\ADM_LHO\Documents\Temperature\Ressources\Data</con:value></con:property></con:properties></con:testCase><con:testCase id="c6b6c2cc-29f3-497e-9936-11ccfa0b466c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="FahrenheitToCelsius TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="84b0bb94-287a-43b4-987e-6fe1cad978e3" name="FahrenheitToCelsius"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TempConvertSoap</con:interface><con:operation>FahrenheitToCelsius</con:operation><con:request name="FahrenheitToCelsius" id="d44cc95d-9d33-4e54-a894-f68a65a8e40c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.w3schools.com/xml/tempconvert.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:x/="https://www.w3schools.com/xml/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <x/:FahrenheitToCelsius>\r
+         <!--Optional:-->\r
+         <x/:Fahrenheit>?</x/:Fahrenheit>\r
+      </x/:FahrenheitToCelsius>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="https://www.w3schools.com/xml/FahrenheitToCelsius" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
