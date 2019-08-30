@@ -1,0 +1,7 @@
+Status: OK
+Time Taken: 36
+Size: 0
+Timestamp: Wed Jun 05 08:54:43 CEST 2019
+TestStep: HelloClass
+
+----------------- Messages ------------------------------

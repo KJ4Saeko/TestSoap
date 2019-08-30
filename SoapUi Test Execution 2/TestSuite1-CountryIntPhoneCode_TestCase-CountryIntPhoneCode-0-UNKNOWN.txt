@@ -1,0 +1,51 @@
+Status: UNKNOWN
+Time Taken: 92
+Size: 392
+Timestamp: Wed Jun 05 08:54:44 CEST 2019
+TestStep: CountryIntPhoneCode
+
+----------------- Messages ------------------------------
+
+----------------- Properties ------------------------------
+Endpoint: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso
+Encoding: UTF-8
+
+---------------- Request ---------------------------
+Request Headers: SOAPAction : ""
+User-Agent : Apache-HttpClient/4.1.1 (java 1.5)
+Host : webservices.oorsprong.org
+Accept-Encoding : gzip,deflate
+Content-Length : 340
+Proxy-Connection : Keep-Alive
+Content-Type : text/xml;charset=UTF-8
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.oorsprong.org/websamples.countryinfo">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:CountryIntPhoneCode>
+         <web:sCountryISOCode>?</web:sCountryISOCode>
+      </web:CountryIntPhoneCode>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+---------------- Response --------------------------
+Response Headers: Accept-Ranges : none
+Cache-Control : private, max-age=0
+Server : Microsoft-IIS/8.5
+Content-Encoding : gzip
+Web-Service : DataFlex 18.2
+#status# : HTTP/1.1 200 OK
+Content-Length : 330
+Proxy-Connection : keep-alive
+Date : Wed, 05 Jun 2019 06:51:43 GMT
+Content-Type : text/xml; charset=utf-8
+
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <m:CountryIntPhoneCodeResponse xmlns:m="http://www.oorsprong.org/websamples.countryinfo">
+         <m:CountryIntPhoneCodeResult>Country not found in the database</m:CountryIntPhoneCodeResult>
+      </m:CountryIntPhoneCodeResponse>
+   </soap:Body>
+</soap:Envelope>

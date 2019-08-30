@@ -1,0 +1,19 @@
+Status: FAILED
+Time Taken: 14
+Size: 0
+Timestamp: Thu May 23 15:27:56 CEST 2019
+TestStep: Property Transfer
+Error:com.eviware.soapui.impl.wsdl.teststeps.PropertyTransferException: Error parsing source property [error: Unexpected element: STRING]
+
+----------------- Messages ------------------------------
+Error performing transfer [CountryName] - Error parsing source property [error: Unexpected element: STRING]
+----------------------------------------------------
+CountryName transferred [[Error parsing source property [error: Unexpected element: STRING]]] from [CountryISOCode.Response] to [CapitalCity.Request]
+------------ source path -------------
+declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.oorsprong.org/websamples.countryinfo';
+//*:CountryISOCodeResult
+------------ target path -------------
+declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.oorsprong.org/websamples.countryinfo';
+//*:sCountryISOCode

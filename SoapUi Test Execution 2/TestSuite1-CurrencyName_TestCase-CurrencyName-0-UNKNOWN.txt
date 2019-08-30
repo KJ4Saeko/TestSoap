@@ -1,0 +1,51 @@
+Status: UNKNOWN
+Time Taken: 92
+Size: 354
+Timestamp: Wed Jun 05 08:54:44 CEST 2019
+TestStep: CurrencyName
+
+----------------- Messages ------------------------------
+
+----------------- Properties ------------------------------
+Endpoint: http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso
+Encoding: UTF-8
+
+---------------- Request ---------------------------
+Request Headers: SOAPAction : ""
+User-Agent : Apache-HttpClient/4.1.1 (java 1.5)
+Host : webservices.oorsprong.org
+Accept-Encoding : gzip,deflate
+Content-Length : 328
+Proxy-Connection : Keep-Alive
+Content-Type : text/xml;charset=UTF-8
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.oorsprong.org/websamples.countryinfo">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:CurrencyName>
+         <web:sCurrencyISOCode>?</web:sCurrencyISOCode>
+      </web:CurrencyName>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+---------------- Response --------------------------
+Response Headers: Accept-Ranges : none
+Cache-Control : private, max-age=0
+Server : Microsoft-IIS/8.5
+Content-Encoding : gzip
+Web-Service : DataFlex 18.2
+#status# : HTTP/1.1 200 OK
+Content-Length : 318
+Proxy-Connection : keep-alive
+Date : Wed, 05 Jun 2019 06:51:44 GMT
+Content-Type : text/xml; charset=utf-8
+
+
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <m:CurrencyNameResponse xmlns:m="http://www.oorsprong.org/websamples.countryinfo">
+         <m:CurrencyNameResult>Currency code NOT found</m:CurrencyNameResult>
+      </m:CurrencyNameResponse>
+   </soap:Body>
+</soap:Envelope>
